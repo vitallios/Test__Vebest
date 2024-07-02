@@ -144,12 +144,16 @@ const fModal = (Content, Title, Counter) => {
       description: Content,
       counter: userCounter,
     });
+    // Находим количество продукта которое указывали в карточках(counter: userCounter) 
+    //  и складываем между собой
     let useCounterRezult = carzina.reduce((acc, card) => {
       return acc + card.counter;
     }, 0);
 
     if (sessionStorageCarzinaValue) {
-      catalogCarzinaSpan.textContent = parseInt(sessionStorageCarzinaValue + useCounterRezult);
+      catalogCarzinaSpan.textContent = parseInt(
+        sessionStorageCarzinaValue + useCounterRezult
+      );
     } else {
       catalogCarzinaSpan.textContent = useCounterRezult;
     }
