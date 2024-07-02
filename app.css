@@ -131,6 +131,14 @@ ul,li{
     border-radius: 10px;
 }
 
+.nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2vw 0;
+}
 
 .catalog__carzina{
  display: flex;
@@ -138,7 +146,7 @@ ul,li{
  flex-direction: row;
  flex-wrap: nowrap;
  justify-content: flex-end;
- position: absolute;
+ /* position: absolute; */
  top: 1vw;
  right: 4vw;
 }
@@ -165,6 +173,7 @@ ul,li{
     -ms-border-radius: 0.7vw;
     -o-border-radius: 0.7vw;
     margin-right: 1vw;
+    font-size: 2vw;
 }
 
 
@@ -181,7 +190,7 @@ ul,li{
         font-size: clamp(20px, 2.2vw, 30px);
        }
        .modal__content {
-        width: 80%;
+        width: clamp(95%, 25vw, 500px);
         height: 40vw;
         gap: 2vw;
     }
@@ -189,15 +198,15 @@ ul,li{
         font-size: 4vw;
     }
     .modal__content>p{
-        font-size: 3.2vw;
+        font-size: clamp(20px, 3.4vw, 30px);
     }
     .counter__minus,
     .counter__pluss{
-        font-size: 3vw;
+        font-size: clamp(20px, 3.2vw, 30px);
         padding: 1vw 2vw;
     }
     .modal__counter>span{
-        font-size: 2vw;
+        font-size: clamp(20px, 2.2vw, 30px);
     }
     .modal__counter {
         gap: 2vw;
@@ -207,46 +216,15 @@ ul,li{
     }
     .modal__clous {
         padding: 2.5vw 3vw;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+    }
+    .removeCarzina {
+        padding: 1vw 2vw;
+        font-size:clamp(24px, 3vw, 36px);
     }
 }
 
-@media (max-width: 500px) {
-    .card__title>h2{
-        font-size: 3.8vw;
-    }
-    .card__title>p{
-        font-size: 3.2vw;
-    }
-    .card__btns>button{
-        padding: 2.4vw 3.4vw;
-        font-size: 2vw;
-       }
-       .modal__content {
-        width: 80%;
-        height: 40vw;
-        gap: 2vw;
-    }
-    .modal__content>h2{
-        font-size: 4vw;
-    }
-    .modal__content>p{
-        font-size: 3.2vw;
-    }
-    .counter__minus,
-    .counter__pluss{
-        font-size: 3vw;
-        padding: 1vw 2vw;
-    }
-    .modal__counter>span{
-        font-size: 2vw;
-    }
-    .modal__counter {
-        gap: 2vw;
-    }
-    .addCarzina {
-        padding: 1.5vw 3vw;
-    }
-    .modal__clous {
-        padding: 2.5vw 3vw;
-    }
-}
