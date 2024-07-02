@@ -45,11 +45,6 @@ var Cards = [
 
 var carzina = [];
 
-
-
-
-
-
 Cards.forEach((card) => {
   const cardList = document.querySelector(".catalog__list");
   const cardElement = document.createElement("li");
@@ -71,23 +66,27 @@ Cards.forEach((card) => {
   cardList.appendChild(cardElement);
 });
 
-
-// 
-// 
+//
+//
 let catalogCarzinaSpan = document.querySelector(".catalog__carzina-span");
 const removeCarzina = document.querySelector(".removeCarzina");
-const sessionStorageCarzinaValue = parseInt(sessionStorage.getItem('CARZINA_COUNTER'));
+const sessionStorageCarzinaValue = parseInt(
+  sessionStorage.getItem("CARZINA_COUNTER")
+);
 
-removeCarzina.addEventListener("click", () =>  {
- sessionStorage.removeItem("CARZINA_COUNTER");
+removeCarzina.addEventListener("click", () => {
+  sessionStorage.removeItem("CARZINA_COUNTER");
+  localStorage.setItem("CARZINA_COUNTER", "");
   catalogCarzinaSpan.textContent = 0;
   carzina = [];
-})
+  location.reload();
+});
 
-catalogCarzinaSpan.textContent = sessionStorageCarzinaValue ? sessionStorageCarzinaValue : 0;
+catalogCarzinaSpan.textContent = sessionStorageCarzinaValue
+  ? sessionStorageCarzinaValue
+  : 0;
 
-
-// 
+//
 
 const fModal = (Content, Title, Counter) => {
   let modal = document.createElement("div");
@@ -115,7 +114,7 @@ const fModal = (Content, Title, Counter) => {
   };
 
   const modalClous = document.querySelector(".modal__clous");
-  // 
+  //
   const counterPluss = document.querySelector(".counter__pluss");
   const counterMinus = document.querySelector(".counter__minus");
   const addCarzina = document.querySelector(".addCarzina");
@@ -123,60 +122,47 @@ const fModal = (Content, Title, Counter) => {
   catalogCarzinaSpan = document.querySelector(".catalog__carzina-span");
   let userCounter;
 
-  // 
+  //
   counterPluss.addEventListener("click", () => {
-   
-   if (counterNumber.children[1].textContent >= 0) {
-    userCounter = parseInt((counterNumber.children[1].textContent++) + 1);
-   }
+    if (counterNumber.children[1].textContent >= 0) {
+      userCounter = parseInt(counterNumber.children[1].textContent++ + 1);
+    }
   });
-  // 
+  //
   counterMinus.addEventListener("click", () => {
-   if (counterNumber.children[1].textContent > 0) {
-    userCounter = parseInt(counterNumber.children[1].textContent--);    
-   }
+    if (counterNumber.children[1].textContent > 0) {
+      userCounter = parseInt(counterNumber.children[1].textContent--);
+    }
   });
-
-
-
-  
-
 
   addCarzina.addEventListener("click", () => {
+    userCounter = userCounter ? userCounter : 1;
 
-   userCounter = userCounter ? userCounter : 1;
-
-   // Добавление в карзину
-   carzina.push({
+    // Добавление в карзину
+    carzina.push({
       name: Title,
       description: Content,
       counter: userCounter,
     });
-    console.log(carzina);
-    console.dir(catalogCarzinaSpan);
+    let useCounterRezult = carzina.reduce((acc, card) => {
+      return acc + card.counter;
+    }, 0);
 
     if (sessionStorageCarzinaValue) {
-     catalogCarzinaSpan.textContent = parseInt(sessionStorageCarzinaValue + carzina.length) ;
-    } 
-    else{
-     catalogCarzinaSpan.textContent = carzina.length
+      catalogCarzinaSpan.textContent = parseInt(sessionStorageCarzinaValue + useCounterRezult);
+    } else {
+      catalogCarzinaSpan.textContent = useCounterRezult;
     }
 
-    // carzina.forEach((e)=>{
-    //  console.log(e);
-    // });
-
-    // for (let key in carzina) {
-    //  console.log(carzina[key]);
-    // }
-
-      // сохраняем данные в памяти
-    window.sessionStorage.setItem('CARZINA_COUNTER', `${catalogCarzinaSpan.textContent}`)
+    // сохраняем данные в памяти
+    window.sessionStorage.setItem(
+      "CARZINA_COUNTER",
+      `${catalogCarzinaSpan.textContent}`
+    );
     modalRemove();
-  })
+  });
 
-
-// 
+  //
   modalClous.addEventListener("click", () => {
     modalRemove();
   });
@@ -208,8 +194,6 @@ cardBtns.forEach((btn) => {
 
     // Количество продукта
     let cardCounter = e.target.parentElement.parentElement.value;
-    // console.dir(cardCounter);
-
     fModal(cardContent, cardTitle, cardCounter);
   });
 });

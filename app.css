@@ -195,7 +195,7 @@ ul,li{
         gap: 2vw;
     }
     .modal__content>h2{
-        font-size: 4vw;
+        font-size: clamp(24px, 4vw, 30px);
     }
     .modal__content>p{
         font-size: clamp(20px, 3.4vw, 30px);
