@@ -130,7 +130,7 @@ const fModal = (Content, Title, Counter) => {
   });
   //
   counterMinus.addEventListener("click", () => {
-    if (counterNumber.children[1].textContent > 0) {
+    if (counterNumber.children[1].textContent > 1) {
       userCounter = parseInt(counterNumber.children[1].textContent--);
     }
   });
@@ -144,7 +144,7 @@ const fModal = (Content, Title, Counter) => {
       description: Content,
       counter: userCounter,
     });
-    // Находим количество продукта которое указывали в карточках(counter: userCounter) 
+    // Находим количество продукта которое указывали в карточках(counter: userCounter)
     //  и складываем между собой
     let useCounterRezult = carzina.reduce((acc, card) => {
       return acc + card.counter;
@@ -166,7 +166,7 @@ const fModal = (Content, Title, Counter) => {
     modalRemove();
   });
 
-  //
+  // Кнопка закрытия модального окна
   modalClous.addEventListener("click", () => {
     modalRemove();
   });
@@ -195,7 +195,6 @@ cardBtns.forEach((btn) => {
     let cardContent =
       e.target.parentElement.parentElement.firstElementChild.lastElementChild
         .textContent;
-
     // Количество продукта
     let cardCounter = e.target.parentElement.parentElement.value;
     fModal(cardContent, cardTitle, cardCounter);

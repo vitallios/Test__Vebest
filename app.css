@@ -202,17 +202,18 @@ ul,li{
     }
     .counter__minus,
     .counter__pluss{
-        font-size: clamp(20px, 3.2vw, 30px);
+        font-size: 3rem;
         padding: 1vw 2vw;
     }
     .modal__counter>span{
-        font-size: clamp(20px, 2.2vw, 30px);
+        font-size: 3rem;
     }
     .modal__counter {
         gap: 2vw;
     }
     .addCarzina {
         padding: 1.5vw 3vw;
+        font-size: 1.7rem;
     }
     .modal__clous {
         padding: 2.5vw 3vw;
